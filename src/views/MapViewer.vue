@@ -62,6 +62,18 @@
                 </v-col>
                 <v-col cols="12" md="4">
                   Location state: {{ currentItem.assetLocationState }}
+                  <v-tooltip right z-index="9999">
+                    <template v-slot:activator="{ on }">
+                        <v-icon
+                            small
+                            class="mb-1"
+                            color="blue darken-3"
+                            v-on="on">
+                            mdi-information-outline
+                        </v-icon>   
+                    </template>
+                    <TooltipContent :item="currentItem" :note="true"></TooltipContent>
+                  </v-tooltip>
                 </v-col>
                 <v-col cols="12" md="2">
                   Width: {{ currentItem.assetMapDetails.dimensions.width }} Height {{ currentItem.assetMapDetails.dimensions.height }}
@@ -231,14 +243,15 @@ import ProgressCircle from '../components/ProgressCircle.vue'
 import api from '../Api.js'
 import AssetForm from '../components/AssetForm.vue'
 import UpdateAssetForm from '../components/UpdateAssetForm.vue'
-
+import TooltipContent from '../components/TooltipContent.vue'
 export default {
   name: "MapViewer",
   components: {
     Map,
     ProgressCircle,
     AssetForm,
-    UpdateAssetForm
+    UpdateAssetForm,
+    TooltipContent
   },
   data: function () {
     return {

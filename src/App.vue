@@ -22,7 +22,7 @@
           <v-list-item-icon><v-icon>mdi-database</v-icon></v-list-item-icon>
           <v-list-item-title>Database</v-list-item-title>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link href="/usersViewer">
           <v-list-item-icon><v-icon>mdi-account-multiple</v-icon></v-list-item-icon>
           <v-list-item-title>Users</v-list-item-title>
         </v-list-item>

@@ -17,22 +17,13 @@
            :parent="true"
            :draggable="movable"
            :resizable="movable">
-          
-           <span v-if="showLetters" v-on="on" style="display:block; height:100%" class="white--text">{{item.assetType.charAt(0)}}</span>
-           <v-tooltip right>
+           <span v-if="showLetters" style="display:block; height:100%" class="white--text">{{item.assetType.charAt(0)}}</span>
+           
+           <v-tooltip right v-if="showDots">
                <template v-slot:activator="{ on }">
                     <span v-if="showDots" v-on="on" style="display:block; height:100%" @click="pickItemToRelocation" @dblclick="removeItemConnection"></span>
                </template>
-               <span>
-                    <v-icon class="white--text mb-0">mdi-map-marker</v-icon>Planned localization:<br><hr>
-                        Building: {{ getBuildingName(item.localization.floor_planned) }}<br>
-                        Floor: {{ getFloorName(item.localization.floor_planned) }}<br>
-                    <v-icon class="white--text mb-0">mdi-map-marker</v-icon>Previous localization:<br><hr>
-                        Building: {{ getBuildingName(item.localization.floor_previous) }}<br>
-                        Floor: {{ getFloorName(item.localization.floor_previous) }}<br>
-                    <v-icon class="white--text mb-0">mdi-note-outline</v-icon>Additional note:<br><hr>
-                    {{ item.additionalNote }}
-                </span>
+               <TooltipContent :item="item" :note="true"></TooltipContent>
            </v-tooltip>
           </vue-draggable-resizable>
       </div>
@@ -40,14 +31,16 @@
 <script>
 import api from '../Api.js'
 import VueDraggableResizable from 'vue-draggable-resizable'
+import TooltipContent from '../components/TooltipContent.vue'
 export default {
     props:["id","items","currentGridSize","selectedColor","zoom","saveDisableStatus","showLetters","showDots","movable"],
     name: "Map",
     components: {
-        VueDraggableResizable
+        VueDraggableResizable,
+        TooltipContent
     },
     data:()=>({
-        itemsToUpdate:[],
+        itemsToUpdate:[], 
         currentItem: {
             id: 0,
             localization: {
@@ -130,12 +123,6 @@ export default {
         mapClicked(item) {
             this.$emit('mapClicked', item);
         },
-        getBuildingName:function(item) {
-            return item != null ? item.building.name : 'Not defined yet'; 
-        },
-        getFloorName: function(item) {
-            return item != null ? item.name : 'Not defined yet'; 
-        }
     },
 }
 </script>

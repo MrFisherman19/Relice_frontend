@@ -30,6 +30,14 @@ export default{
         return response.status;
     }),
     //get (get)
+    getCurrentUserDetails:()=>instance.get('/getCurrentUserDetails').then(response=>{
+        return response.data;
+    }),
+    getUsersByGroupId:(id)=>instance.get('/getUsersByGroup?id=' + id, { headers: {
+        'Content-Type':'application/json',
+    }}).then(response=>{
+        return response.data;
+    }),
     getAllSelectableOptions:()=>instance.get('/options/getSelectableOptionsArrays')
     .then(response=>{
         return response.data;

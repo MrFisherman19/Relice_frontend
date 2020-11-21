@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import LoginForm from '../components/Authorization/LoginForm.vue'
 import RegisterForm from '../components/Authorization/RegisterForm.vue'
 import DatabaseViewer from '../components/DatabaseViewer.vue'
-import UserDetails from '../components/UserDetails.vue'
 import BuildingPanel from '../views/BuildingPanel.vue'
 import FloorsPanel from '../views/FloorsPanel.vue'
 import MainPage from '../views/MainPage.vue'
@@ -11,6 +10,7 @@ import MapViewer from '../views/MapViewer.vue'
 import RelocationViewer from '../views/RelocationViewer'
 import ReportsPanel from '../views/ReportsPanel'
 import NotFound from '../views/NotFound'
+import UsersViewer from '../views/UsersViewer'
 
 Vue.use(VueRouter)
 
@@ -48,14 +48,6 @@ Vue.use(VueRouter)
     }
   },
   {
-    path: '/userDetails',
-    name: 'userDetails',
-    component: UserDetails,
-    meta: {
-      title: 'User details'
-    }
-  },
-  {
     path: '/buildingList',
     name: 'buildingList',
     component: BuildingPanel
@@ -84,6 +76,12 @@ Vue.use(VueRouter)
     path: '/reportsPanel',
     name: 'reportsPanel',
     component: ReportsPanel,
+    // props: true
+  },
+  {
+    path: '/usersViewer',
+    name: 'usersViewer',
+    component: UsersViewer,
     // props: true
   },
   {

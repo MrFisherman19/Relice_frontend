@@ -135,10 +135,22 @@
                             <span v-if='item.assetConditionState==="TO_BE_FIXED"' class="orange--text">{{item.assetConditionState}}</span>
                             <span v-if='item.assetConditionState==="TO_BE_THROWN_AWAY"' class="black--text">{{item.assetConditionState}}</span>
                         </template>
-                        <template v-slot:[`item.assetLocationState`] = "{ item }">
+                        <template v-slot:[`item.assetLocationState`] = "{ item }" >
                             <span v-if='item.assetLocationState==="TO_RELOCATION"' class="red--text">{{item.assetLocationState}}</span>
                             <span v-if='item.assetLocationState==="RIGHT_PLACE"' class="green--text">{{item.assetLocationState}}</span>
                             <span v-if='item.assetLocationState==="TEMPORARY_PLACE"' class="orange--text">{{item.assetLocationState}}</span>
+                            <v-tooltip right>    
+                                <template v-slot:activator="{ on }">
+                                    <v-icon
+                                        small
+                                        class="ma-2"
+                                        color="blue darken-3"
+                                        v-on="on">
+                                        mdi-information-outline
+                                    </v-icon>   
+                                </template>
+                                <TooltipContent :item="item" :note="false"></TooltipContent>
+                            </v-tooltip>
                         </template>
                     </v-data-table>
                 </v-card>
@@ -163,10 +175,12 @@
 <script>
 import api from '../Api.js'
 import FloorSelector from '../components/FloorSelector.vue'
+import TooltipContent from '../components/TooltipContent.vue'
 export default {
     name: 'DatabaseViewer',
     components: {
-        FloorSelector
+        FloorSelector,
+        TooltipContent
     },
     data:()=>({
         headers:[
@@ -178,8 +192,6 @@ export default {
             { text: 'Location state', sortable: true, value: 'assetLocationState'},
             { text: 'Building', sortable: true, value: 'localization.floor.building.name'},
             { text: 'Floor', sortable: true, value: 'localization.floor.name'},
-            { text: 'x-axis', sortable: false, value: 'localization.coordinates.xaxis'},
-            { text: 'y-axis', sortable: false, value: 'localization.coordinates.yaxis'},
             { text: 'Actions', sortable: false, align:'center', value: 'actions'},
         ],
         assetList:[],

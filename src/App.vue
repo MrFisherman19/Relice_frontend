@@ -10,19 +10,19 @@
     <v-main>
       <v-navigation-drawer v-if="!isPublicPage" v-show="menu" absolute permanent expand-on-hover>
       <v-list>
-        <v-list-item link href="/relocationViewer">
+        <v-list-item @click="$router.push('/relocationViewer').catch(()=>{})">
           <v-list-item-icon><v-icon>mdi-arrow-top-right</v-icon></v-list-item-icon>
           <v-list-item-title>Relocation</v-list-item-title>
         </v-list-item>
-        <v-list-item link href="/buildingList">
+        <v-list-item @click="$router.push('/buildingList').catch(()=>{})">
           <v-list-item-icon><v-icon>mdi-bank</v-icon></v-list-item-icon>
           <v-list-item-title>Buildings</v-list-item-title>
         </v-list-item>
-        <v-list-item link href="/assetList">
+        <v-list-item @click="$router.push('/assetList').catch(()=>{})">
           <v-list-item-icon><v-icon>mdi-database</v-icon></v-list-item-icon>
           <v-list-item-title>Database</v-list-item-title>
         </v-list-item>
-        <v-list-item link href="/usersViewer">
+        <v-list-item @click="$router.push('/usersViewer').catch(()=>{})">
           <v-list-item-icon><v-icon>mdi-account-multiple</v-icon></v-list-item-icon>
           <v-list-item-title>Users</v-list-item-title>
         </v-list-item>
@@ -30,7 +30,7 @@
           <v-list-item-icon><v-icon>mdi-qrcode</v-icon></v-list-item-icon>
           <v-list-item-title>QR Codes</v-list-item-title>
         </v-list-item>
-        <v-list-item link href="/reportsPanel">
+        <v-list-item @click="$router.push('/reportsPanel').catch(()=>{})">
           <v-list-item-icon><v-icon>mdi-chart-line</v-icon></v-list-item-icon>
           <v-list-item-title>Reports</v-list-item-title>
         </v-list-item>
@@ -45,9 +45,12 @@
       </v-list>
     </v-navigation-drawer>
         <router-link to="/signIn"></router-link>
+      <transition name="slide-fade" mode="out-in">
         <router-view/>
-    </v-main>
-  </v-app>
+      </transition>
+      </v-main>
+    <span class="text-end ml-200 pa-4 pt-0 copyright">© Copyright by <a href="" class="linkToCopyrighter">Bartosz Rybak 2020</a></span>
+  </v-app>  
 </template>
 
 <script>
@@ -98,6 +101,31 @@ export default {
 };
 </script>
 <style>
+  .linkToCopyrighter {
+    color: #990033;
+    text-decoration: none;
+  }
+  .linkToCopyrighter:visited {
+    color: #990033;
+  }
+  .copyright {
+    position: relative;
+    right: 0;
+    bottom: 0;
+  }
+  .slide-fade-enter-active {
+    opacity: 1;
+    transition: all 1s ease-out;
+  }
+  .slide-fade-leave-active {
+    opacity: 1;
+    transition: all 1s ease-out;
+  }
+  .slide-fade-enter, .slide-fade-leave-to {
+    transform:translateX(500px);
+    opacity: 0;
+  }
+
   /* .v-application{
     background-color: 
   } */

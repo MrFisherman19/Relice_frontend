@@ -89,6 +89,7 @@
                                             </v-row>
                                         </v-container>
                                     </v-card-text>
+                                    <v-divider></v-divider>
                                     <v-card-actions>
                                         <v-btn icon><v-icon color="gray darken-3" @click="close">mdi-close</v-icon></v-btn>
                                         <v-spacer></v-spacer>

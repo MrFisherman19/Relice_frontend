@@ -30,10 +30,10 @@ export default{
         return response.status;
     }),
     //get (get)
-    getCurrentUserDetails:()=>instance.get('/getCurrentUserDetails').then(response=>{
+    getCurrentUserDetails:()=>instance.get('/user/getCurrentUserDetails').then(response=>{
         return response.data;
     }),
-    getUsersByGroupId:(id)=>instance.get('/getUsersByGroup?id=' + id, { headers: {
+    getUsersByGroupId:(id)=>instance.get('/admin/getUsersByGroup?id=' + id, { headers: {
         'Content-Type':'application/json',
     }}).then(response=>{
         return response.data;
@@ -68,11 +68,6 @@ export default{
     })),
     getAllBuildings:(()=>instance.get('/office/getAllBuildings')
     .then(response=>{
-        return response.data;
-    })),
-    getUserDetailsByEmail:((email)=>instance.get('/userDetails?email=' + email, {headers: {
-        'Content-Type':'application/json',
-    }}).then(response=>{
         return response.data;
     })),
     getFloorById:((id)=>instance.get('office/getFloor?id=' + id, { headers:{
@@ -117,6 +112,11 @@ export default{
         return response.data;
     })),
     //create
+    createUser:((jsonObject)=>instance.post('/admin/createUser', jsonObject, {headers: {
+        'Content-Type':'application/json',
+    }}).then(response=>{
+        return response.data;
+    })),
     createAsset:((jsonObject)=>instance.post('/asset/createAsset', jsonObject, {headers: {
         'Content-Type':'application/json',
     }}).then(response=>{
@@ -144,6 +144,14 @@ export default{
     })),
     //delete
     deleteAsset:((id)=>instance.delete('/asset/deleteAsset?id=' + id)
+    .then(response=>{
+        return response.status;
+    })),
+    deleteUser:((email)=>instance.delete('/admin/deleteUser?email=' + email)
+    .then(response=>{
+        return response.status;
+    })),
+    deleteCurrentUser:(()=>instance.delete('/user/deleteCurrentUser')
     .then(response=>{
         return response.status;
     })),

@@ -1,7 +1,7 @@
 <template>
-    <v-container>
+    <v-container fluid>
         <v-row no-gutters justify="end" align="center">
-            <v-col cols="10" md="11">
+            <v-col cols="10" md="10">
                 <v-row>
                     <v-col cols="12" md="12">
                         <v-dialog
@@ -23,7 +23,9 @@
                 </v-row>
                 <v-row>
                     <v-col cols="12" md="12">
-                        <v-card v-if="!loading & floors.length != 0">
+                        <v-card v-if="!loading & floors.length != 0" flat>
+                            <v-card-title>Floors</v-card-title>
+                            <v-divider></v-divider>
                             <v-list>
                                 <Floor v-on:deleteFloor="deleteFloor" v-on:shouldshowmappreview='$router.push("/mapViewer/" + floor.id)' v-for="floor in floors" :key="floor.id" :floorProperties="floor"></Floor>
                             </v-list>

@@ -11,6 +11,7 @@ import RelocationViewer from '../views/RelocationViewer'
 import ReportsPanel from '../views/ReportsPanel'
 import NotFound from '../views/NotFound'
 import UsersViewer from '../views/UsersViewer'
+import FinderView from '../views/FinderView'
 
 Vue.use(VueRouter)
 
@@ -82,6 +83,12 @@ Vue.use(VueRouter)
     path: '/usersViewer',
     name: 'usersViewer',
     component: UsersViewer,
+    // props: true
+  },
+  {
+    path: '/finder',
+    name: 'finderView',
+    component: FinderView,
     // props: true
   },
   {

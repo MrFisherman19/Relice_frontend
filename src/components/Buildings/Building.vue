@@ -2,7 +2,7 @@
     <v-card>
         <v-card-title>{{ buildingProperties.name }}</v-card-title>
         <v-card-subtitle>{{ buildingProperties.owner}} </v-card-subtitle>
-        <v-img class="afterScaling" max-height="194" :src="buildingProperties.imageUrl" position="center">
+        <v-img max-height="194" :src="buildingProperties.imageUrl">
             <template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
                     <v-progress-circular indeterminate color="#990033"></v-progress-circular>
@@ -32,26 +32,42 @@
         <v-dialog v-model='updateRequest' max-width="500" persistent>
             <v-card>
                 <v-card-title>Update Building Properties</v-card-title>
-                <v-row no-gutters align="center" justify="center">
-                    <v-col cols="12">
-                        <v-text-field v-model="building.name" outlined dense color="#990033" label="Name" :value="buildingProperties.name" class="ml-2 mr-2"></v-text-field>
-                        <v-text-field v-model="building.owner" outlined dense color="#990033" label="Owner" :value="buildingProperties.owner" class="ml-2 mr-2"></v-text-field>
-                        <v-text-field v-model="building.imageUrl" outlined dense color="#990033" label="Image url" :value="buildingProperties.imageUrl" class="ml-2 mr-2"></v-text-field>
-
-                        <v-text-field v-model="building.address.streetName" outlined dense color="#990033" label="Street" :value="buildingProperties.address.streetName" class="ml-2 mr-2"></v-text-field>
-                        <v-text-field v-model="building.address.numberOnStreet" outlined dense color="#990033" label="Number on street" :value="buildingProperties.address.numberOnStreet" class="ml-2 mr-2"></v-text-field>
-                        <v-text-field v-model="building.address.zipCode" outlined dense color="#990033" label="Zip code" :value="buildingProperties.address.zipCode" class="ml-2 mr-2"></v-text-field>
-                        <v-text-field v-model="building.address.city" outlined dense color="#990033" label="City" :value="buildingProperties.address.city" class="ml-2 mr-2"></v-text-field>   
-                        <v-text-field v-model="building.address.country" outlined dense color="#990033" label="Country" :value="buildingProperties.address.country" class="ml-2 mr-2"></v-text-field>  
-
-                        <v-divider></v-divider>
-                        <v-card-actions>
-                            <v-btn icon><v-icon color="gray darken-3" @click="updateRequest=false">mdi-close</v-icon></v-btn>
-                            <v-spacer></v-spacer>
-                            <v-btn icon><v-icon color="green darken-3" @click="update">mdi-content-save</v-icon></v-btn>
-                        </v-card-actions>
-                    </v-col>
-                </v-row>
+                    <v-card-text>
+                        <v-container>
+                        <v-row>
+                            <v-col cols="12" md="12">
+                                <v-text-field v-model="building.name" dense color="#990033" label="Name"></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="12">
+                                <v-text-field v-model="building.owner" dense color="#990033" label="Owner"></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="12">
+                                <v-text-field v-model="building.imageUrl" dense color="#990033" label="Image url"></v-text-field>
+                            </v-col>
+                            <v-col cols="6" md="6">    
+                                <v-text-field v-model="building.address.streetName" dense color="#990033" label="Street"></v-text-field>
+                            </v-col>
+                            <v-col cols="6" md="6">    
+                                <v-text-field v-model="building.address.numberOnStreet" dense color="#990033" label="Number on street"></v-text-field>
+                            </v-col>
+                            <v-col cols="6" md="6">    
+                                <v-text-field v-model="building.address.zipCode" dense color="#990033" label="Zip code"></v-text-field>
+                            </v-col>
+                            <v-col cols="6" md="6">    
+                                <v-text-field v-model="building.address.city" dense color="#990033" label="City"></v-text-field>   
+                            </v-col>
+                            <v-col cols="12" md="12">    
+                                <v-text-field v-model="building.address.country" dense color="#990033" label="Country"></v-text-field>  
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                </v-card-text>
+                <v-divider></v-divider>
+                <v-card-actions>
+                    <v-btn icon><v-icon color="gray darken-3" @click="updateRequest=false">mdi-close</v-icon></v-btn>
+                    <v-spacer></v-spacer>
+                    <v-btn icon><v-icon color="green darken-3" @click="update">mdi-content-save</v-icon></v-btn>
+                </v-card-actions>
             </v-card>
         </v-dialog>
     </v-card>    
@@ -75,7 +91,7 @@ export default {
                 city: '',
                 country: ''
             }
-        }
+        },
     }),
     created(){
         this.building = this.buildingProperties;
@@ -91,6 +107,10 @@ export default {
         },
         deleteBuilding() { 
             this.$emit('deleteBuilding', this.building);
+        },
+        imageLoaded() {
+            console.log('loaded');
+            this.loaded = true;
         }
     }
 }

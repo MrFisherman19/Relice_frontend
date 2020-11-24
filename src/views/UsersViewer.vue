@@ -35,13 +35,13 @@
                     <v-card-title>Your team</v-card-title>
                     <v-divider></v-divider>
                     <v-list>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <transition-group name="slide-fade" mode="out-in">
-                                    <UserContent v-for="(user,index) in usersGroup" :key="index" :user="user" :avatarSize="60" v-on:deleteUser="deleteUser"></UserContent>
-                                </transition-group>
-                            </v-list-item-content>
-                        </v-list-item>
+                        <transition-group name="slide-fade" mode="out-in">
+                            <v-list-item v-for="user in usersGroup" :key="user.email">
+                                <v-list-item-content>                                    
+                                    <UserContent :user="user" :avatarSize="60" v-on:deleteUser="deleteUser"></UserContent>
+                                </v-list-item-content>
+                            </v-list-item>
+                        </transition-group>
                     </v-list>
                 </v-card>
             </v-col>

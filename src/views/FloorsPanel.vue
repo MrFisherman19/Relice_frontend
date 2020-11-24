@@ -27,7 +27,13 @@
                             <v-card-title>Floors</v-card-title>
                             <v-divider></v-divider>
                             <v-list>
-                                <Floor v-on:deleteFloor="deleteFloor" v-on:shouldshowmappreview='$router.push("/mapViewer/" + floor.id)' v-for="floor in floors" :key="floor.id" :floorProperties="floor"></Floor>
+                                <transition-group name="slide-fade" mode="out-in">
+                                    <v-list-item v-for="floor in floors" :key="floor.id">
+                                        <v-list-item-content> 
+                                            <Floor v-on:deleteFloor="deleteFloor" v-on:shouldshowmappreview='$router.push("/mapViewer/" + floor.id)' :floorProperties="floor"></Floor>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </transition-group>
                             </v-list>
                         </v-card>
                         <v-card v-else-if="floors.length == 0 && loading == false">

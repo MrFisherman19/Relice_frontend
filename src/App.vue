@@ -14,6 +14,10 @@
           <v-list-item-icon><v-icon>mdi-arrow-top-right</v-icon></v-list-item-icon>
           <v-list-item-title>Relocation</v-list-item-title>
         </v-list-item>
+        <v-list-item @click="$router.push('/finder').catch(()=>{})">
+          <v-list-item-icon><v-icon>mdi-magnify</v-icon></v-list-item-icon>
+          <v-list-item-title>Asset finder</v-list-item-title>
+        </v-list-item>
         <v-list-item @click="$router.push('/buildingList').catch(()=>{})">
           <v-list-item-icon><v-icon>mdi-bank</v-icon></v-list-item-icon>
           <v-list-item-title>Buildings</v-list-item-title>
@@ -27,8 +31,8 @@
           <v-list-item-title>Users</v-list-item-title>
         </v-list-item>
         <v-list-item link>
-          <v-list-item-icon><v-icon>mdi-qrcode</v-icon></v-list-item-icon>
-          <v-list-item-title>QR Codes</v-list-item-title>
+          <v-list-item-icon><v-icon>mdi-barcode</v-icon></v-list-item-icon>
+          <v-list-item-title>Barcodes</v-list-item-title>
         </v-list-item>
         <v-list-item @click="$router.push('/reportsPanel').catch(()=>{})">
           <v-list-item-icon><v-icon>mdi-chart-line</v-icon></v-list-item-icon>
@@ -49,7 +53,7 @@
         <router-view/>
       </transition>
       </v-main>
-    <span class="text-end ml-200 pa-4 pt-0 copyright">© Copyright by <a href="" class="linkToCopyrighter">Bartosz Rybak 2020</a></span>
+    <span v-if="!isPublicPage" class="text-end ml-200 pa-4 pt-0 copyright">© Copyright by <a href="" class="linkToCopyrighter">Bartosz Rybak 2020</a></span>
   </v-app>  
 </template>
 

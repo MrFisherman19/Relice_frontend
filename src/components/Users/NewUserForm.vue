@@ -3,6 +3,7 @@
         <v-card-title>{{ title }}</v-card-title>
         <v-card-text>
             <v-container>
+                <form>
                 <v-row>
                     <v-col cols="12" md="12">
                         <v-text-field v-model="user.name" dense color="#990033" label="Name" class="ml-2 mr-2"></v-text-field>
@@ -20,6 +21,7 @@
                         <v-select v-model="user.userRole" :rules="[rules.required]" :items="authorities" label="Authority" dense color="#990033" class="ml-2 mr-2 mt-4"></v-select>
                     </v-col>
                 </v-row>
+                </form>
             </v-container>
         </v-card-text>
         <v-divider></v-divider>

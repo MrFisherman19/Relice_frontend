@@ -3,9 +3,10 @@
         <v-card-title>{{ title }}</v-card-title>
         <v-card-text>
             <v-container>
+                <v-form v-model="isFormValid"> 
                 <v-row>
                     <v-col cols="12" md="12">
-                        <v-text-field v-model="building.name" dense color="#990033" label="Name"></v-text-field>
+                        <v-text-field v-model="building.name" dense color="#990033" label="Name" :rules="[rules.required]"></v-text-field>
                     </v-col>
                     <v-col cols="12" md="12">
                         <v-text-field v-model="building.owner" dense color="#990033" label="Owner"></v-text-field>
@@ -29,13 +30,14 @@
                         <v-text-field v-model="building.address.country" dense color="#990033" label="Country"></v-text-field>  
                     </v-col>
                 </v-row>
+                </v-form>
             </v-container>
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
             <v-btn icon><v-icon color="gray darken-3" @click="close">mdi-close</v-icon></v-btn>
             <v-spacer></v-spacer>
-            <v-btn icon><v-icon color="green darken-3" @click="save">mdi-content-save</v-icon></v-btn>
+            <v-btn icon><v-icon color="green darken-3" @click="save" :disabled="!isFormValid">mdi-content-save</v-icon></v-btn>
         </v-card-actions>
         </v-card>
 </template>
@@ -44,6 +46,10 @@ export default {
     name: 'NewBuildingForm',
     props:['title'],
     data:()=>({
+        isFormValid: false,
+        rules: {
+            required: value => !!value || 'Required.'
+        },
         building: {
             name: '',
             owner: '',

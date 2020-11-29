@@ -237,13 +237,12 @@
   </div>
 </template>
 <script>
-import Map from '../components/Map.vue'
-
+import Map from '../components/Floors/Map.vue'
 import ProgressCircle from '../components/ProgressCircle.vue'
 import api from '../Api.js'
-import AssetForm from '../components/AssetForm.vue'
-import UpdateAssetForm from '../components/UpdateAssetForm.vue'
-import TooltipContent from '../components/TooltipContent.vue'
+import AssetForm from '../components/Assets/AssetForm.vue'
+import UpdateAssetForm from '../components/Assets/UpdateAssetForm.vue'
+import TooltipContent from '../components/Floors/TooltipContent.vue'
 export default {
   name: "MapViewer",
   components: {

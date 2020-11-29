@@ -1,6 +1,6 @@
 <template>
     <v-card class="mx-auto ma-2" max-width="400">
-        <v-img class="align-end" height="150px" src="https://cdn.redshift.autodesk.com/2018/08/future-of-buildings-header.jpg">
+        <v-img :eager="true" class="align-end" height="150px" src="https://cdn.redshift.autodesk.com/2018/08/future-of-buildings-header.jpg">
            <v-card-title> 
                 <v-card flat class="pr-2 pl-2" style="border: 1px solid #990033">
                     <v-card-title class="pa-1">
@@ -17,7 +17,7 @@
     </v-card>
 </template>
 <script>
-import api from '../Api.js'
+import api from '../../Api.js'
 export default {
     name: 'Report',
     props:["name","url"],

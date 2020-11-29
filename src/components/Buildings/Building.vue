@@ -2,7 +2,7 @@
     <v-card>
         <v-card-title>{{ buildingProperties.name }}</v-card-title>
         <v-card-subtitle>{{ buildingProperties.owner}} </v-card-subtitle>
-        <v-img max-height="194" :src="buildingProperties.imageUrl">
+        <v-img :eager="true" max-height="194" :src="buildingProperties.imageUrl">
             <template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
                     <v-progress-circular indeterminate color="#990033"></v-progress-circular>

@@ -64,8 +64,8 @@
 </template>
 <script>
 import api from '../Api.js'
-import UserContent from '../components/UserContent.vue'
-import NewUserForm from '../components/NewUserForm.vue'
+import UserContent from '../components/Users/UserContent.vue'
+import NewUserForm from '../components/Users/NewUserForm.vue'
 export default {
     data:()=>({
         errorSnackbar: false,

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const SERVER_URL = 'http://localhost:8081'
+// const SERVER_URL = 'http://192.168.6.43:8081'
 
 let authInstance = axios.create({
     baseURL: SERVER_URL,
@@ -85,8 +86,18 @@ export default{
     }}).then(response=>{
         return response.data;
     })),
+    downloadReport:(url)=>instance.get(url, {headers: {
+        'Content-Type':'application/json',
+    },responseType: "blob"}).then(response=>{
+        return response.data;
+    }),
     //update (put)
     updateBuilding:((jsonObject)=>instance.put('/office/updateBuilding', jsonObject, {headers: {
+        'Content-Type':'application/json',
+    }}).then(response=>{
+        return response.data;
+    })),
+    updateFloor:((jsonObject)=>instance.put('/office/updateFloor', jsonObject, {headers: {
         'Content-Type':'application/json',
     }}).then(response=>{
         return response.data;
@@ -101,17 +112,17 @@ export default{
     }}).then(response=>{
         return response.data;
     })),
-    addConnection:((jsonObject)=>instance.put('/asset/addConnection', jsonObject, {headers: {
-        'Content-Type':'application/json',
-    }}).then(response=>{
-        return response.data;
-    })),
     relocateAssets:((jsonObject)=>instance.patch('/asset/relocateAssets', jsonObject, {headers: {
         'Content-Type':'application/json',
     }}).then(response=>{
         return response.data;
     })),
     //create
+    addConnection:((jsonObject)=>instance.put('/asset/addConnection', jsonObject, {headers: {
+        'Content-Type':'application/json',
+    }}).then(response=>{
+        return response.data;
+    })),
     createUser:((jsonObject)=>instance.post('/admin/createUser', jsonObject, {headers: {
         'Content-Type':'application/json',
     }}).then(response=>{
@@ -172,9 +183,5 @@ export default{
     .then(response=>{
         return response.status;
     })),
-    downloadReport:(url)=>instance.get(url, {headers: {
-        'Content-Type':'application/json',
-    },responseType: "blob"}).then(response=>{
-        return response.data;
-    }),
+    
 }

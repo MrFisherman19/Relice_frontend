@@ -19,7 +19,7 @@
            :resizable="movable">
            <span v-if="showLetters" style="display:block; height:100%" class="white--text">{{item.assetType.charAt(0)}}</span>
            
-           <v-tooltip right v-if="showDots">
+           <v-tooltip right v-if="showDots" z-index="999">
                <template v-slot:activator="{ on }">
                     <span v-if="showDots" v-on="on" style="display:block; height:100%" @click="pickItemToRelocation" @dblclick="removeItemConnection"></span>
                </template>
@@ -29,9 +29,9 @@
       </div>
 </template>
 <script>
-import api from '../Api.js'
+import api from '../../Api.js'
 import VueDraggableResizable from 'vue-draggable-resizable'
-import TooltipContent from '../components/TooltipContent.vue'
+import TooltipContent from '../Floors/TooltipContent.vue'
 export default {
     props:["id","items","currentGridSize","selectedColor","zoom","saveDisableStatus","showLetters","showDots","movable"],
     name: "Map",

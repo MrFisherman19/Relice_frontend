@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LoginForm from '../components/Authorization/LoginForm.vue'
 import RegisterForm from '../components/Authorization/RegisterForm.vue'
-import DatabaseViewer from '../components/DatabaseViewer.vue'
+import DatabaseViewer from '../views/DatabaseViewer.vue'
 import BuildingPanel from '../views/BuildingPanel.vue'
 import FloorsPanel from '../views/FloorsPanel.vue'
 import MainPage from '../views/MainPage.vue'
@@ -12,6 +12,7 @@ import ReportsPanel from '../views/ReportsPanel'
 import NotFound from '../views/NotFound'
 import UsersViewer from '../views/UsersViewer'
 import FinderView from '../views/FinderView'
+import CreditsPanel from '../views/CreditsPanel'
 
 Vue.use(VueRouter)
 
@@ -71,31 +72,31 @@ Vue.use(VueRouter)
     path: '/relocationViewer',
     name: 'relocationViewer',
     component: RelocationViewer,
-    // props: true
   },
   {
     path: '/reportsPanel',
     name: 'reportsPanel',
     component: ReportsPanel,
-    // props: true
   },
   {
     path: '/usersViewer',
     name: 'usersViewer',
     component: UsersViewer,
-    // props: true
   },
   {
     path: '/finder',
     name: 'finderView',
     component: FinderView,
-    // props: true
+  },
+  {
+    path: '/credits',
+    name: 'credits',
+    component: CreditsPanel,
   },
   {
     path: '*',
     name: 'notFound',
     component: NotFound,
-    // props: true
   }
 ]
 

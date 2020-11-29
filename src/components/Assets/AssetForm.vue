@@ -3,6 +3,7 @@
         <v-card-title>{{ title }}</v-card-title>
         <v-card-text>
             <v-container>
+                <v-form v-model="isFormValid">
                 <v-row dense>
                     <v-col cols="12" md="12">
                         <v-text-field v-model="editedItem.name" label="Name of asset" dense color="#990033"></v-text-field>
@@ -68,13 +69,14 @@
                         </v-row>
                     </v-col>
                 </v-row>
+                </v-form>
             </v-container>
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
             <v-btn icon><v-icon color="gray darken-3" @click="close">mdi-close</v-icon></v-btn>
             <v-spacer></v-spacer>
-            <v-btn icon><v-icon color="green darken-3" @click="save">mdi-content-save</v-icon></v-btn>
+            <v-btn icon><v-icon color="green darken-3" @click="save" :disabled="!isFormValid">mdi-content-save</v-icon></v-btn>
         </v-card-actions>
     </v-card>
 </template>
@@ -85,6 +87,7 @@ export default {
     props:['editedItem', 'title'],
     data:()=>({
         items:[],
+        isFormValid: false,
         conditionStates:[],
         locationStates:[],
         assetTypes:[],

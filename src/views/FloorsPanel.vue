@@ -17,7 +17,7 @@
                             New floor<v-icon small>mdi-plus</v-icon>
                             </v-btn>
                             </template>
-                            <NewFloorForm v-on:close="newFloorDialog = false" v-on:createFloor="createFloor" title="Create floor"></NewFloorForm>
+                            <NewFloorForm :floor="floor" v-on:setDefault="floor = JSON.parse(JSON.stringify(defaultFloor))" v-on:close="newFloorDialog = false" v-on:saveFloor="createFloor" title="Create floor"></NewFloorForm>
                         </v-dialog>
                     </v-col>
                 </v-row>
@@ -66,7 +66,7 @@
 import api from '../Api.js'
 import Floor from '../components/Floors/Floor.vue'
 import ProgressCircle from '../components/ProgressCircle.vue'
-import NewFloorForm from '../components/NewFloorForm.vue'
+import NewFloorForm from '../components/Floors/NewFloorForm.vue'
 export default {
     components: {
         Floor,
@@ -79,7 +79,21 @@ export default {
         floors: [],
         id: 0,
         loading:true,
-        newFloorDialog: false
+        newFloorDialog: false,
+        floor: {
+            name: '',
+            description: '',
+            building: {
+                id: ''
+            }
+        },
+        defaultFloor: {
+            name: '',
+            description: '',
+            building: {
+                id: ''
+            }
+        },
     }),
     mounted:function() {
         this.loading = true,

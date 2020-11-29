@@ -9,7 +9,7 @@
     </v-select>
 </template>
 <script>
-import api from '../Api.js'
+import api from '../../Api.js'
 export default {
     name: 'FloorSelector',
     props: ["dense", "color", "label"],

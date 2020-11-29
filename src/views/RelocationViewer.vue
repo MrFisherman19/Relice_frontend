@@ -52,7 +52,7 @@
     </div>
 </template>
 <script>
-import Map from '../components/Map.vue'
+import Map from '../components/Floors/Map.vue'
 import api from '../Api.js'
 export default {
     name: "RelocationViewer",

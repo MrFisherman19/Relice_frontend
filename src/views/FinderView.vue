@@ -52,33 +52,32 @@
                                         Condition state: {{ asset.assetConditionState }}
                                     </v-col>
                                     <v-col cols="6" md="6">
-                                        <b>Current location</b><br>
+                                        <v-icon>mdi-map-marker</v-icon><b>Current location</b><br>
                                         Floor: {{ asset.localization.floor.name }}<br>
                                         Building: {{ asset.localization.floor.building.name}}
                                     </v-col>
                                     <v-col cols="6" md="6" v-if="asset.localization.floor_planned != null">
-                                        <b>Planned location</b><br>
+                                        <v-icon>mdi-map-marker</v-icon><b>Planned location</b><br>
                                         Floor: {{ asset.localization.floor_planned.name }}<br>
                                         Building: {{ asset.localization.floor_planned.building.name}}
                                     </v-col>
                                     <v-col cols="6" md="6" v-else>
-                                        <b>Planned location</b><br>
+                                        <v-icon>mdi-map-marker</v-icon><b>Planned location</b><br>
                                         not planned yet
                                     </v-col>
                                     <v-col cols="12" md="12">
                                         <b>Additional note</b><br>
                                         {{ asset.additionalNote }}
                                     </v-col>
-                                    <v-col cols="6" md="6" v-if="asset.localization.floor_previous != null">
-                                        <b>Previous location</b><br>
+                                    <v-col cols="12" md="12" v-if="asset.localization.floor_previous != null">
+                                        <v-icon>mdi-map-marker</v-icon><b>Previous location</b><br>
                                         Floor: {{ asset.localization.floor_previous.name }}<br>
                                         Building: {{ asset.localization.floor_previous.building.name}}
                                     </v-col>
                                     <v-col cols="12" md="12" v-else>
-                                        <b>Previous location</b><br>
+                                        <v-icon>mdi-map-marker</v-icon><b>Previous location</b><br>
                                         There is no previous location for this asset
                                     </v-col>
-                                    
                                 </v-row>
                                 </v-container>                                  
                             </v-card>

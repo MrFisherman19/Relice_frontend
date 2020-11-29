@@ -12,18 +12,20 @@
     </v-container>
 </template>
 <script>
-import Report from '../components/Report.vue'
+import Report from '../components/Reports/Report.vue'
 export default {
     name: 'ReportsPanel',
     data:()=>({
         reports:[
             {
                 name: 'Office health report',
-                url: 'http://localhost:8081/report/getAssetsConditionReport'
+                url: 'http://192.168.6.43:8081/report/getAssetsConditionReport'
+                // url: 'http://localhost:8081/report/getAssetsConditionReport'
             },
             {
                 name: 'Asset relocation report',
-                url: ''
+                url: 'http://192.168.6.43:8081/report/getAssetsLocationReport'
+                // url: 'http://localhost:8081/report/getAssetsLocationReport'
             },
             {
                 name: 'Fixed assets inventory report',

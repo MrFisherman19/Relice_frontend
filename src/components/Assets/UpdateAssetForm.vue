@@ -3,6 +3,7 @@
         <v-card-title>{{ title }}</v-card-title>
         <v-card-text>
             <v-container>
+                <v-form v-model="isFormValid">
                 <v-row>
                     <v-col cols="12" md="12">
                         <v-text-field v-model="editedItem.name" label="Name of asset" dense color="#990033"></v-text-field>
@@ -28,17 +29,18 @@
                                 <v-text-field v-model="editedItem.assetMapDetails.dimensions.height" label="Height" dense color="#990033"></v-text-field>
                             </v-col>
                             <v-col>
-                                <v-text-field v-model="editedItem.localization.zaxis" label="Z-index" dense color="#990033"></v-text-field>
+                                <v-text-field v-model="editedItem.localization.coordinates.zaxis" label="Z-index" dense color="#990033"></v-text-field>
                             </v-col>
                         </v-row>
                     </v-col>                            
                 </v-row>
+                </v-form>
             </v-container>
         </v-card-text>
         <v-card-actions>
             <v-btn icon><v-icon color="gray darken-3" @click="close">mdi-close</v-icon></v-btn>
             <v-spacer></v-spacer>
-            <v-btn icon><v-icon color="green darken-3" @click="save">mdi-content-save</v-icon></v-btn>
+            <v-btn icon><v-icon color="green darken-3" @click="save" :disabled="!isFormValid">mdi-content-save</v-icon></v-btn>
         </v-card-actions>
     </v-card>
 </template>
@@ -50,8 +52,9 @@ export default {
         conditionStates:[],
         locationStates:[],
         assetTypes:[],
+        isFormValid: false,
         rules: {
-            required: value => !!value || 'Required.'
+            required: value => !!value || 'Required.',
         }
     }),
     methods:{

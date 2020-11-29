@@ -30,9 +30,9 @@
           <v-list-item-icon><v-icon>mdi-account-multiple</v-icon></v-list-item-icon>
           <v-list-item-title>Users</v-list-item-title>
         </v-list-item>
-        <v-list-item link>
-          <v-list-item-icon><v-icon>mdi-barcode</v-icon></v-list-item-icon>
-          <v-list-item-title>Barcodes</v-list-item-title>
+        <v-list-item @click="$router.push('/credits').catch(()=>{})">
+          <v-list-item-icon><v-icon>mdi-layers</v-icon></v-list-item-icon>
+          <v-list-item-title>Credits</v-list-item-title>
         </v-list-item>
         <v-list-item @click="$router.push('/reportsPanel').catch(()=>{})">
           <v-list-item-icon><v-icon>mdi-chart-line</v-icon></v-list-item-icon>
@@ -53,7 +53,21 @@
         <router-view/>
       </transition>
       </v-main>
-    <span v-if="!isPublicPage" class="text-end ml-200 pa-4 pt-0 copyright">© Copyright by <a href="" class="linkToCopyrighter">Bartosz Rybak 2020</a></span>
+    <span v-if="!isPublicPage" class="text-end pa-4 pt-0 copyright">© Copyright by <a href="" class="linkToCopyrighter">Bartosz Rybak 2020</a></span>
+    <v-snackbar v-model="errorSnackbar">{{ errorMessage }}
+      <template v-slot:action = "{ attrs }">
+          <v-btn
+              text
+              v-bind="attrs"
+              color="red darken-3"
+              @click="errorSnackbar = false">
+              <v-icon color="red darken-3">
+                  mdi-close
+              </v-icon>
+              Close
+          </v-btn>
+      </template>
+    </v-snackbar>
   </v-app>  
 </template>
 
@@ -71,6 +85,8 @@ export default {
      menu: true,
      mini: true,
      darkMode: false,
+     errorSnackbar: false,
+     errorMessage: '',
   }),
   mounted() {
     this.getAllSelectableOptions();
@@ -128,9 +144,6 @@ export default {
   .slide-fade-enter, .slide-fade-leave-to {
     transform:translateX(500px);
     opacity: 0;
+    height: 0;
   }
-
-  /* .v-application{
-    background-color: 
-  } */
 </style>

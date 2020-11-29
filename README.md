@@ -1,4 +1,4 @@
-# login_form_relice_app
+# relice_app_frontend
 
 ## Project setup
 ```

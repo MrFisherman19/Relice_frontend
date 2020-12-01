@@ -80,7 +80,7 @@ export default {
     LogoutButton
   },
   data: () => ({
-     subpagesWithoutAppBar:['signIn',"signUp","mainPage"],
+     subpagesWithoutAppBar:["signIn","signUp","mainPage"],
      shouldCollapse: false,
      menu: true,
      mini: true,

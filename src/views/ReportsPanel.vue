@@ -19,12 +19,12 @@ export default {
         reports:[
             {
                 name: 'Office health report',
-                url: 'http://192.168.6.43:8081/report/getAssetsConditionReport'
-                // url: 'http://localhost:8081/report/getAssetsConditionReport'
+                // url: 'http://192.168.6.43:8081/report/getAssetsConditionReport'
+                url: 'http://localhost:8081/report/getAssetsConditionReport'
             },
             {
                 name: 'Asset relocation report',
-                url: 'http://192.168.6.43:8081/report/getAssetsLocationReport'
+                // url: 'http://192.168.6.43:8081/report/getAssetsLocationReport'
                 // url: 'http://localhost:8081/report/getAssetsLocationReport'
             },
             {

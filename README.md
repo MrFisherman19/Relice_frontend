@@ -37,25 +37,29 @@ Then user will see database of office assets, if user select a few or more asset
 
 ![Database](https://i.imgur.com/cScnOY6.png?raw=true)
 
+User can go to the selected floor manually by selecting the building and then the floor in the building. Here he can also add a new building or remove an existing one.
 
+![Buildings](https://i.imgur.com/lzIVgM6.png?raw=true)
 
+Then will see a map of selected floor. He can add new items, resize and move them as he wants. Letters and colors helps with distinguish the items. User can add a few same items on the same time or duplicate existing ones.
 
+![Map](https://i.imgur.com/c8wYPLn.png?raw=true)
 
+Then user can go to relocation panel where can move the asset with a click of the mouse (on second map). All of data is saved in database so if page will be reloaded, all necessary data will be saved.
 
+![Relocation](https://i.imgur.com/RDx2ixL.png?raw=true)
 
+Current user (as admin) can add new or delete users from his group.
 
+![UserPanel](https://i.imgur.com/iFPGYMt.png?raw=true)
 
+There is also possibility to generate 2 reports in pdf, an office health report and a report of assets to be relocated.
 
+![Reports](https://i.imgur.com/D4tcd7W.png?raw=true)
 
+There is also special panel for transport company where employees can quickly find information about assets by scanning barcode to system.
 
-
-
-
-
-
-
-
-
+![AssetFinder](https://i.imgur.com/3snBwEL.png)
 
 
 ## Auto generated - Project setup
